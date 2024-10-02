@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DPA.GreenCity.DOMAIN.Infrastructure.Data;
+namespace DPA.GreenCity.DOMAIN.Core.Entities;
 
 public partial class Informes
 {

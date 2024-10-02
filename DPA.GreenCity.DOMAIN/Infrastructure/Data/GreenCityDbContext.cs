@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DPA.GreenCity.DOMAIN.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DPA.GreenCity.DOMAIN.Infrastructure.Data;
@@ -24,10 +25,6 @@ public partial class GreenCityDbContext : DbContext
     public virtual DbSet<Reportes> Reportes { get; set; }
 
     public virtual DbSet<Usuarios> Usuarios { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-DPH98UJ\\SQLEXPRESS;Database=GreenCityDB;Integrated Security=true;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DPA.GreenCity.DOMAIN.Infrastructure.Data;
+namespace DPA.GreenCity.DOMAIN.Core.Entities;
 
 public partial class Reportes
 {
@@ -26,6 +26,7 @@ public partial class Reportes
     public double? UbicacionLng { get; set; }
 
     public string? Foto { get; set; }
+    public bool? IsActive { get; set; }
 
     public virtual ICollection<Comentarios> Comentarios { get; set; } = new List<Comentarios>();
 
