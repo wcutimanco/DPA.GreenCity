@@ -1,4 +1,6 @@
+using DPA.GreenCity.DOMAIN.Core.Interfaces;
 using DPA.GreenCity.DOMAIN.Infrastructure.Data;
+using DPA.GreenCity.DOMAIN.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,8 @@ var cnx = _config.GetConnectionString("DevConnection");
 builder.Services
     .AddDbContext<GreenCityDbContext>
     (options => options.UseSqlServer(cnx));
+
+builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
