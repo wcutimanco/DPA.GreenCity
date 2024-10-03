@@ -1,4 +1,5 @@
 ﻿using DPA.GreenCity.DOMAIN.Core.Entities;
+using DPA.GreenCity.DOMAIN.Core.Interfaces;
 using DPA.GreenCity.DOMAIN.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;

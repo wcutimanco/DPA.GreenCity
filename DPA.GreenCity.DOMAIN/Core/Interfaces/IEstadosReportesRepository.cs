@@ -1,6 +1,6 @@
 ﻿using DPA.GreenCity.DOMAIN.Core.Entities;
 
-namespace DPA.GreenCity.DOMAIN.Infrastructure.Repositories
+namespace DPA.GreenCity.DOMAIN.Core.Interfaces
 {
     public interface IEstadosReportesRepository
     {

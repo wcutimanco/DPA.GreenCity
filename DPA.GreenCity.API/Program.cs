@@ -14,6 +14,8 @@ builder.Services
 
 builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
 
+builder.Services.AddTransient<IEstadosReportesRepository, EstadosReportesRepository>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
