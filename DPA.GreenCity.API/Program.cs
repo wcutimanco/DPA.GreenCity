@@ -1,3 +1,4 @@
+using DPA.GreenCity.DOMAIN.Core.Services;
 using DPA.GreenCity.DOMAIN.Core.Interfaces;
 using DPA.GreenCity.DOMAIN.Infrastructure.Data;
 using DPA.GreenCity.DOMAIN.Infrastructure.Repositories;
@@ -15,6 +16,8 @@ builder.Services
 builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
 
 builder.Services.AddTransient<IEstadosReportesRepository, EstadosReportesRepository>();
+
+builder.Services.AddTransient<IReportesService, ReportesService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
