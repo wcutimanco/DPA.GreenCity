@@ -29,17 +29,17 @@ namespace DPA.GreenCity.API.Controllers
             return Ok(reporte);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUsuario([FromBody] Reportes reportes)
+        public async Task<IActionResult> CreateUsuario([FromBody] Usuarios usuario)
         {
-            int id = await _usuariosRepository.InsertUsuario(reportes);
+            int id = await _usuariosRepository.InsertUsuario(usuario);
             return Ok(id);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUsuario([FromRoute] int id, [FromBody] Reportes reporte)
+        public async Task<IActionResult> UpdateUsuario([FromRoute] int id, [FromBody] Usuarios usuario)
         {
-            if (id != reporte.IdReporte) return BadRequest();
-            var result = await _usuariosRepository.UpdateUsuario(reporte);
+            if (id != usuario.IdUsuario) return BadRequest();
+            var result = await _usuariosRepository.UpdateUsuario(usuario);
             if (!result) return BadRequest();
             return Ok(result);
         }

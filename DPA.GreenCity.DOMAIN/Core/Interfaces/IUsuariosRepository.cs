@@ -7,7 +7,7 @@ namespace DPA.GreenCity.DOMAIN.Core.Interfaces
         Task<bool> DeleteUsuario(int id);
         Task<IEnumerable<Reportes>> GetUsuarios();
         Task<Reportes> GetUsuarioById(int id);
-        Task<int> InsertUsuario(Reportes reporte);
-        Task<bool> UpdateUsuario(Reportes reporte);
+        Task<int> InsertUsuario(Usuarios usuario);
+        Task<bool> UpdateUsuario(Usuarios usuario);
     }
 }
