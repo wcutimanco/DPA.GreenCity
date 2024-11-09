@@ -1,4 +1,5 @@
 ﻿using DPA.GreenCity.DOMAIN.Core.Entities;
+using DPA.GreenCity.DOMAIN.Core.DTO;
 using DPA.GreenCity.DOMAIN.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,46 +10,40 @@ namespace DPA.GreenCity.API.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private readonly IUsuariosRepository _usuariosRepository;
-
-        public UsuariosController(IUsuariosRepository usuariosRepository)
+        private readonly IUsuariosServices _usuariosService;
+        public UsuariosController(IUsuariosServices usuariosService)
         {
-            _usuariosRepository = usuariosRepository;
-        }
-        [HttpGet]
-        public async Task<IActionResult> GetUsuarios()
-        {
-            var reportes = await _usuariosRepository.GetUsuarios();
-            return Ok(reportes);
-        }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsuarioById(int id)
-        {
-            var reporte = await _usuariosRepository.GetUsuarioById(id);
-            if (reporte == null) return NotFound();
-            return Ok(reporte);
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateUsuario([FromBody] Usuarios usuario)
-        {
-            int id = await _usuariosRepository.InsertUsuario(usuario);
-            return Ok(id);
+            _usuariosService = usuariosService;
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUsuario([FromRoute] int id, [FromBody] Usuarios usuario)
+        [HttpPost("SignUp")]
+        public async Task<IActionResult> SignUp([FromBody] UsuariosRequestAuthDTO usuariosRequest)
         {
-            if (id != usuario.IdUsuario) return BadRequest();
-            var result = await _usuariosRepository.UpdateUsuario(usuario);
-            if (!result) return BadRequest();
+            var user = new Usuarios()
+            {
+                Correo = usuariosRequest.Correo,
+                Contraseña = usuariosRequest.Contraseña,
+                Nombre = usuariosRequest.Nombre,
+                Telefono = usuariosRequest.Telefono,
+                Direccion = usuariosRequest.Direccion,
+                
+            };
+
+            var result = await _usuariosService.Insert(user);
+            if (!result) return BadRequest(result);
             return Ok(result);
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario([FromRoute] int id)
+
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn([FromBody] UsuariosAuthDTO authDTO)
         {
-            var result = await _usuariosRepository.DeleteUsuario(id);
-            if (!result) return BadRequest();
+            //TODO: Validar email
+            var result = await _usuariosService.SignIn(authDTO.Correo, authDTO.Contraseña);
+            if (result == null) return NotFound();
             return Ok(result);
         }
+
     }
+
 }
+

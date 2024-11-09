@@ -4,10 +4,7 @@ namespace DPA.GreenCity.DOMAIN.Core.Interfaces
 {
     public interface IUsuariosRepository
     {
-        Task<bool> DeleteUsuario(int id);
-        Task<IEnumerable<Reportes>> GetUsuarios();
-        Task<Reportes> GetUsuarioById(int id);
-        Task<int> InsertUsuario(Usuarios usuario);
-        Task<bool> UpdateUsuario(Usuarios usuario);
+        Task<bool> Insert(Usuarios user);
+        Task<Usuarios> SignIn(string email, string pwd);
     }
 }

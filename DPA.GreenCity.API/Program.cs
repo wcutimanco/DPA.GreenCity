@@ -18,8 +18,24 @@ builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
 builder.Services.AddTransient<IEstadosReportesRepository, EstadosReportesRepository>();
 
 builder.Services.AddTransient<IReportesService, ReportesService>();
+builder.Services.AddTransient<IUsuariosRepository, UsuariosRepository>();
+builder.Services.AddTransient<IUsuariosServices, UsuariosServices>();
 
 builder.Services.AddControllers();
+
+//ADD CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder//.WithOrigins("http://www.midominiofrontend.com")
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,6 +50,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+app.UseCors();
 
 app.MapControllers();
 
