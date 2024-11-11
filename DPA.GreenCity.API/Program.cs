@@ -3,6 +3,7 @@ using DPA.GreenCity.DOMAIN.Core.Interfaces;
 using DPA.GreenCity.DOMAIN.Infrastructure.Data;
 using DPA.GreenCity.DOMAIN.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using DPA.GreenCity.DOMAIN.Infrastructure.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +15,12 @@ builder.Services
     (options => options.UseSqlServer(cnx));
 
 builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
-
 builder.Services.AddTransient<IEstadosReportesRepository, EstadosReportesRepository>();
-
 builder.Services.AddTransient<IReportesService, ReportesService>();
 builder.Services.AddTransient<IUsuariosRepository, UsuariosRepository>();
 builder.Services.AddTransient<IUsuariosServices, UsuariosServices>();
+
+builder.Services.AddSharedInfrastructure(_config);
 
 builder.Services.AddControllers();
 
@@ -51,7 +52,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.UseCors();
-
 app.MapControllers();
 
 app.Run();
