@@ -33,8 +33,6 @@ namespace DPA.GreenCity.DOMAIN.Core.DTO
 
         public string Contraseña { get; set; } = null!;
 
-        public string TipoUsuario { get; set; } = null!;
-
         public string? Telefono { get; set; }
 
         public string? Direccion { get; set; }

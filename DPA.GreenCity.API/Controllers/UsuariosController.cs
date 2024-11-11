@@ -26,7 +26,7 @@ namespace DPA.GreenCity.API.Controllers
                 Nombre = usuariosRequest.Nombre,
                 Telefono = usuariosRequest.Telefono,
                 Direccion = usuariosRequest.Direccion,
-                
+                TipoUsuario = "CIU"
             };
 
             var result = await _usuariosService.Insert(user);
