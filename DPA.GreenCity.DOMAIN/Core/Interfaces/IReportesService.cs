@@ -1,4 +1,5 @@
 ﻿using DPA.GreenCity.DOMAIN.Core.DTO;
+using DPA.GreenCity.DOMAIN.Core.Entities;
 
 namespace DPA.GreenCity.DOMAIN.Core.Interfaces
 {
@@ -7,7 +8,7 @@ namespace DPA.GreenCity.DOMAIN.Core.Interfaces
         Task<bool> DeleteReporte(int id);
         Task<IEnumerable<ReporteListDTO>> GetReportes();
         Task<ReporteListDTO> GetReportesById(int id);
-        Task<int> InsertReportes(ReporteDescriptionDTO reporteDTO);
+        Task<bool> InsertReporte(Reportes reporte);
         Task<bool> UpdateReportes(ReporteListDTO reporteListDTO);
     }
 }

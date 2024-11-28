@@ -39,16 +39,29 @@ namespace DPA.GreenCity.API.Controllers
             if (reporte == null) return NotFound();
             return Ok(reporte);
         }
-        [HttpPost]
+        [HttpPost("Reportar")]
         /* public async Task<IActionResult> CreateReporte([FromBody]Reportes reportes)
          {
              int id = await _reportesRepository.InsertReporte(reportes);
              return Ok(id);
          }*/
-        public async Task<IActionResult> CreateReporte([FromBody] ReporteDescriptionDTO reporteDescriptionDTO)
+        public async Task<IActionResult> CreateReporte([FromBody] ReportePostDTO reportePostDTO)
         {
-            int id = await _reportesService.InsertReportes(reporteDescriptionDTO);
-            return Ok(id);
+            var reportes = new Reportes()
+            {
+                IdUsuario = reportePostDTO.IdUsuario,
+                Categoria = reportePostDTO.Categoria,
+                Subcategoria = reportePostDTO.Subcategoria,
+                Descripcion = reportePostDTO.Descripcion,
+                Estado = "En Proceso",
+                FechaCreacion = reportePostDTO.FechaCreacion,
+                IsActive = true,
+            };
+
+
+            var result = await _reportesService.InsertReporte(reportes);
+            if (!result) return BadRequest(result);
+            return Ok(result);
         }
 
 

@@ -30,12 +30,12 @@ namespace DPA.GreenCity.DOMAIN.Infrastructure.Repositories
                 .FirstOrDefaultAsync();
             return reporte;
         }
-        public async Task<int> InsertReporte(Reportes reporte)
+        public async Task<bool> InsertReporte(Reportes reporte)
         {
             reporte.IsActive = true;
             await _greenCityDbContext.Reportes.AddAsync(reporte);
             int row = await _greenCityDbContext.SaveChangesAsync();
-            return row > 0 ? reporte.IdReporte : -1;
+            return row > 0;
         }
 
         public async Task<bool> UpdateReporte(Reportes reporte)
@@ -54,6 +54,7 @@ namespace DPA.GreenCity.DOMAIN.Infrastructure.Repositories
             return (rows > 0);
 
         }
+
 
     }
 }

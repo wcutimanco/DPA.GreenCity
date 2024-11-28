@@ -38,6 +38,7 @@ namespace DPA.GreenCity.DOMAIN.Core.Services
                 Telefono = user.Telefono,
                 Direccion = user.Direccion,
                 Token = token,
+                TipoUsuario = user.TipoUsuario,
                 IsEmailSent = sendEmail,
             };
             return usuarioResponseAuth;

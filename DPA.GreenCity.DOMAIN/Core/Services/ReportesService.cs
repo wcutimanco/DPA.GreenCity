@@ -46,14 +46,19 @@ namespace DPA.GreenCity.DOMAIN.Core.Services
             return reporteDTO;
         }
 
-        public async Task<int> InsertReportes(ReporteDescriptionDTO reporteDTO)
-        {
-            var reporte = new Reportes();
-            reporte.Descripcion = reporteDTO.Descripcion;
-            reporte.IsActive = true;
+        /* public async Task<int> InsertReportes(ReporteDescriptionDTO reporteDTO)
+         {
+           var reporte = new Reportes();
+          reporte.Descripcion = reporteDTO.Descripcion;
+          reporte.IsActive = true;
 
-            int id = await _reportesRepository.InsertReporte(reporte);
-            return id;
+          int id = await _reportesRepository.InsertReporte(reporte);
+          return id;
+         }*/
+
+        public async Task<bool> InsertReporte(Reportes reporte)
+        {
+            return await _reportesRepository.InsertReporte(reporte);
         }
 
         public async Task<bool> UpdateReportes(ReporteListDTO reporteListDTO)

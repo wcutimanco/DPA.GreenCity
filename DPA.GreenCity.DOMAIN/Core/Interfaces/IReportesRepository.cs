@@ -7,7 +7,7 @@ namespace DPA.GreenCity.DOMAIN.Core.Interfaces
         Task<bool> DeleteReporte(int id);
         Task<IEnumerable<Reportes>> GetReportes();
         Task<Reportes> GetReportesById(int id);
-        Task<int> InsertReporte(Reportes reporte);
+        Task<bool> InsertReporte(Reportes reporte);
         Task<bool> UpdateReporte(Reportes reporte);
     }
 }

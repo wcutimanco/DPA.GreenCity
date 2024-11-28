@@ -55,5 +55,25 @@ namespace DPA.GreenCity.DOMAIN.Core.DTO
         {
             public string? Descripcion { get; set; }
         }
-    
-}
+
+    public class ReportePostDTO
+    {
+
+        public int? IdUsuario { get; set; }
+
+        public string Categoria { get; set; } = null!;
+
+        public string? Subcategoria { get; set; }
+
+        public string Descripcion { get; set; } = null!;
+
+       
+        public DateTime? FechaCreacion { get; set; }
+
+
+      
+
+
+       }
+
+    }
