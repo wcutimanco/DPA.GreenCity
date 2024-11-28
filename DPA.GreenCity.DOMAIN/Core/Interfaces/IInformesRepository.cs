@@ -7,7 +7,7 @@ namespace DPA.GreenCity.DOMAIN.Core.Interfaces
         Task<bool> Delete(int id);
         Task<IEnumerable<Informes>> GetInformes();
         Task<Informes> GetInformesById(int id);
-        Task<int> Insert(Informes informes);
+        Task<bool> Insert(Informes informes);
         Task<bool> Update(Informes informes);
     }
 }

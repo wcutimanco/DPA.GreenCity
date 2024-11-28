@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DPA.GreenCity.DOMAIN.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,19 @@ namespace DPA.GreenCity.DOMAIN.Core.DTO
 {
     public class InformesDTO
     {
-        public int IdInforme { get; set; }
 
         public int? IdUsuario { get; set; }
 
         public string TipoInforme { get; set; } = null!;
 
+        public DateTime? FechaGeneracion { get; set; }
+
+        public string? Ubicacion { get; set; }
+
+        public string? Categoria { get; set; }
+
+        public string? RutaArchivo { get; set; }
+      
     }
 
     public class InformesListDTO
@@ -22,10 +30,7 @@ namespace DPA.GreenCity.DOMAIN.Core.DTO
 
         public string TipoInforme { get; set; } = null!;
 
-        internal void Add(InformesListDTO informeDTO)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 
     public class InformesTipoDTO

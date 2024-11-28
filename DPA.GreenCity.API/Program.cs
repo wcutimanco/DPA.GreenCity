@@ -19,6 +19,8 @@ builder.Services.AddTransient<IEstadosReportesRepository, EstadosReportesReposit
 builder.Services.AddTransient<IReportesService, ReportesService>();
 builder.Services.AddTransient<IUsuariosRepository, UsuariosRepository>();
 builder.Services.AddTransient<IUsuariosServices, UsuariosServices>();
+builder.Services.AddTransient<IInformesRepository, InformesRepository>();
+builder.Services.AddTransient<IInformesService, InformesService>();
 
 builder.Services.AddSharedInfrastructure(_config);
 

@@ -34,11 +34,11 @@ namespace DPA.GreenCity.DOMAIN.Infrastructure.Repositories
             return info;
         }
 
-        public async Task<int> Insert(Informes informes)
+        public async Task<bool> Insert(Informes informes)
         {
             await _dbContext.Informes.AddAsync(informes);
             int rows = await _dbContext.SaveChangesAsync();
-            return rows > 0 ? informes.IdInforme : -1;
+            return rows > 0;
 
         }
 
